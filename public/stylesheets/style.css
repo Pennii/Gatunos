@@ -86,4 +86,11 @@ footer {
     color: white;
     padding: 1rem;
 }
-
+#tc{
+    font-family: 'Koulen', cursive;
+    color: orange;
+    font-size: larger;
+}
+form{
+    color: rgb(255, 166, 0);
+}

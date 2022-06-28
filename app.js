@@ -20,10 +20,63 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-require('dotenv').config();
+app.use(session({
+  secret: 'auswighdiuawgd',
+  resave: false,
+  saveUninitialized: true
+}));
+require('dotenv').config()
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.get('/', function(req, res){
+  var cambios = Boolean(req.session.nombre);
+  res.render('index',{
+    nombre: req.session.nombre,
+    apellido: req.session.apellido,
+    cambios: cambios,
+  })
+})
+app.post('/cambiar', function(req,res){
+  if (req.body.nombre){
+    req.session.nombre = req.body.nombre
+    req.session.apellido = req.body.apellido
+  }
+  res.redirect('/');
+  });
+  var nodemailer = require("nodemailer");
+  app.post('/', async (req, res, next )=> {
+    var nombre = req.session.nombre;
+    var apellido = req.session.apellido;
+    var email = req.body.email;
+    var mensaje = req.body.mensaje;
+    var obj = {
+      to: 'matiasspennino@gmail.com',
+      subject: 'contacto web',
+      html: nombre + " " + apellido + " se comunico con este correo " + email + ". <br> su mensaje fue el siguiente: " + mensaje
+    }
+    var transport = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+  
+    var info = await transport.sendMail(obj);
+  
+   res.render('index',{
+    cambios: req.session.nombre,
+    nombre: req.session.nombre,
+    apellido: req.session.apellido
+   });
+  
+  });
+app.get('/salir', function(req,res){
+  req.session.destroy();
+  res.render('index');
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -140,11 +140,29 @@
             </iframe>
         </div>
         <a name="contacto"></a>
+        {{#if cambios}}
+        <p id="tc">Hola {{nombre}} {{apellido}}</p>
+        <form action="/" method="post">
+            <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com"
+                    name="email" required>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensaje" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Mensaje</button>
+        </form>
+        <br>
+        <a href="/salir"><button class="btn btn-success">salir</button></a>
+        {{/if}}
+        {{#unless cambios}}
         <div class="container-fluid" id="contact">
             <h2>
                 Como contactarnos:
             </h2>
-            <form action="/" method="post">
+            <form action=" /cambiar" method="post">
                 <div class="row">
                     <div class="mb-3 col-3">
                         <label for="exampleFormControlInput1" class="form-label">Nombre</label>
@@ -155,23 +173,10 @@
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="apellido" required>
                     </div>
                 </div>
-                <div class="mb-3 col-6">
-                    <label for="exampleFormControlInput1" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                        placeholder="ejemplo@gmail.com" name="email" required>
-                </div>
-                <div class="mb-3 col-6">
-                    <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensaje" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-success" >Enviar</button>
+                <button type="submit" class="btn btn-success">Enviar</button>
             </form>
-            {{#if mensaje}}
-            <p>{{mensaje}}</p>
-            {{/if}}
-            
         </div>
-        
+        {{/unless}}
     </div>
 </section>
 <div class="modal" tabindex="-1" id="mod">
