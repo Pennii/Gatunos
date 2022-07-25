@@ -8,6 +8,7 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/admin/login');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(session({
 require('dotenv').config()
 
 //app.use('/', indexRouter);
+app.use('/admin/login', loginRouter);
 app.use('/users', usersRouter);
 app.get('/', function(req, res){
   var cambios = Boolean(req.session.nombre);
