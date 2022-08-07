@@ -19,15 +19,31 @@
                         Novedades:
                     </h2>
                     <ul id="listanov">
-                        <li><a href="#" class="btn-primary" data-bs-toggle="modal" data-bs-target="#mod"><img
-                                    src="images/lata.jpg">
-                                La
-                                mejor marca de alimento para tu mascota</a></li>
-                        <li><a href="#"><img src="images/vacunas.jpg"> El tiempo recomendado para cada vacuna</a>
-                        <li><a href="#"><img src="images/adiestrado.jpg"> El truco para que tu gato entienda sus
-                                errores</a></li>
+                        {{#each novedades}}
+                        <li>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{id}}"><img src="images/lata.jpg">
+                                {{titulo}}</a>
+                        </li>
+                        {{/each}}
                     </ul>
                 </div>
+                {{#each novedades}}
+                <div class="modal" tabindex="-1" id="modal{{id}}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h2>{{subtitulo}}</h2>
+                                <p>{{cuerpo}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
                 <div class="col">
                     <h2>Gatos ayudados recientemente:</h2>
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
@@ -55,7 +71,7 @@
                             <div class="carousel-item">
                                 <img src="images/gato4.jpg" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <p>Peluza</p>
+                                    <p>uvita</p>
                                 </div>
                             </div>
                         </div>
@@ -140,57 +156,6 @@
             </iframe>
         </div>
         <a name="contacto"></a>
-        {{#if cambios}}
-        <p id="tc">Hola {{nombre}} {{apellido}}</p>
-        <form action="/" method="post">
-            <div class="mb-3 col-6">
-                <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com"
-                    name="email" required>
-            </div>
-            <div class="mb-3 col-6">
-                <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensaje" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Mensaje</button>
-        </form>
-        <br>
-        <a href="/salir"><button class="btn btn-success">salir</button></a>
-        {{/if}}
-        {{#unless cambios}}
-        <div class="container-fluid" id="contact">
-            <h2>
-                Como contactarnos:
-            </h2>
-            <form action=" /cambiar" method="post">
-                <div class="row">
-                    <div class="mb-3 col-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" required>
-                    </div>
-                    <div class="mb-3 col-3">
-                        <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="apellido" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-success">Enviar</button>
-            </form>
-        </div>
-        {{/unless}}
+
     </div>
 </section>
-<div class="modal" tabindex="-1" id="mod">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Whiskas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci porro suscipit nesciunt magni
-                    alias tempore quam repellat cum illum voluptatem omnis at, nobis ullam cupiditate aperiam obcaecati
-                    neque quisquam excepturi!</p>
-            </div>
-        </div>
-    </div>
-</div>

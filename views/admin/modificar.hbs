@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <h4>modificar:</h4>
+    <form action="/admin/novedades/modificar" method="post">
+        <div class="form-group">
+            <input type="hidden" class="form-control" value="{{novedad.id}}" name="id">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="{{novedad.titulo}}" name="titulo">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="{{novedad.subtitulo}}" name="subtitulo">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" value="{{novedad.cuerpo}}" name="cuerpo">
+        </div>
+        <button type="submit" class="btn btn-primary">guardar</button>
+    </form>
+    {{#if error}}
+    <h5>{{message}}</h5>
+    {{/if}}
+</div>
