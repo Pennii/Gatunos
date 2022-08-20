@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var usuarioscontModel = require('../models/usuarioscontModel');
+var nodemailer = require("nodemailer");
 
 
 router.get('/contacto', async function (req, res, next) {
@@ -9,6 +9,7 @@ router.get('/contacto', async function (req, res, next) {
     layout: 'layout'
   });
 });
+
 
 
 

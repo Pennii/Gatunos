@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-require('dotenv').config()
-
+require('dotenv').config();
+var nodemailer = require('nodemailer');
 
 
 var indexRouter = require('./routes/index');
@@ -53,13 +53,28 @@ app.get('/nov', novrouter);
 app.get('/historia', histrouter);
 app.get('/contacto', contactorouter);
 
-
-app.get('/saludo', function(req, res) {
-  var user = req.query.user
+app.post('/contact', async (req, res, next) =>{
+  var nombre = req.body.nombre;
+  var mail = req.body.mail;
+  var mensaje = req.body.mensaje;
+  var obj = {
+    to: 'matiasspennino@gmail.com',
+    subject: 'mail de contcto',
+    html: nombre + "se contacta con el mail " + mail + " con el siguiene mensaje: " + mensaje 
+  }
+  var transport = nodemailer.createTransport({
+    host: "smtp.mailtap.io",
+    port: 2525,
+    auth: {
+      user: "0fa0f229b6bdd0",
+      pass: "0bdf8f439d1fe0"
+    }
+  });
+  var info = await transport.sendMail(obj);
   res.render('contacto', {
-    user
+    msj: "mensaje enviado correctamente"
   })
-})
+}) 
 
 
 // catch 404 and forward to error handler

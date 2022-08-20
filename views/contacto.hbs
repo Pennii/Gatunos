@@ -5,10 +5,28 @@
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.210053245579!2d-58.42231094987033!3d-34.59884956465026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca7cd54f107b%3A0x88bd8fe0e0b6e3a6!2sCentro%20de%20e-Learning%20UTN%20BA!5e0!3m2!1ses-419!2sar!4v1653764096135!5m2!1ses-419!2sar"
             class="embed-responsive" allowfullscreen>
         </iframe>
+        <p>Nos encontramos en una zona de facil acceso, en caso de querer venir en persona le pedimos que nos deje un mensaje indicando a que hora llegara. Tambien puede enviarnos cualquier idea o sugerencia que se le ocurra sobre como cuidar a los gatos</p>
     </div>
     <div class="container-fluid col-6">
         <h2>Contacto:</h2>
-        
+        <form action="/contact" method="post">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="mail" id="exampleFormControlInput1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nombre y apellido</label>
+                <input type=" text" class="form-control" id="exampleFormControlInput1" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="mensaje" rows="3"></textarea>
+            </div>
+            <button type="submit">enviar</button>
+        </form>
+        {{#if msj}}
+        <p id="msj">{{msj}}</p>
+        {{/if}}
     </div>
 
 </div>
