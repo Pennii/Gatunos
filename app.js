@@ -60,10 +60,10 @@ app.post('/contact', async (req, res, next) =>{
   var obj = {
     to: 'matiasspennino@gmail.com',
     subject: 'mail de contcto',
-    html: nombre + "se contacta con el mail " + mail + " con el siguiene mensaje: " + mensaje 
+    html: nombre + " se contacta con el mail " + mail + " con el siguiene mensaje: " + mensaje 
   }
   var transport = nodemailer.createTransport({
-    host: "smtp.mailtap.io",
+    host: "smtp.mailtrap.io",
     port: 2525,
     auth: {
       user: "0fa0f229b6bdd0",
