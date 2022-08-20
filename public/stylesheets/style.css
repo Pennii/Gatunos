@@ -1,23 +1,21 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 #primerback {
     margin: 0;
     padding: 1rem;
     background-image: url('../images/back1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
 }
 
-#corte {
-    height: 10px;
-    background-color: black;
-}
 
-#segundoback {
-    margin-top: 0px;
-    padding: 1rem;
-    background-image: url('../images/back2.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 h1,
 h2 {
@@ -33,9 +31,7 @@ h2 {
     text-align: left;
 }
 
-#nov {
-    margin-top: 50px;
-}
+
 
 #listanov {
     margin: 0;
@@ -62,35 +58,23 @@ h2 {
     background-color: rgba(245, 222, 179, 0.548);
 }
 
-#listanov img {
-    height: 80px;
-    width: 120px;
-    margin: 0;
-}
 
-#cont-hist {
-    margin-top: 100px;
-}
 
-.hist {
-    margin-left: 50px;
-}
-#nos{
-    margin-top: 50px;
-}
-#mapp{
-    margin-top: 50px;
-}
+
+
+
 footer {
     background-color: black;
     color: white;
     padding: 1rem;
 }
-#tc{
+
+#tc {
     font-family: 'Koulen', cursive;
     color: orange;
     font-size: larger;
 }
-form{
+
+form {
     color: rgb(255, 166, 0);
 }

@@ -12,6 +12,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
 var novedadesRouter = require('./routes/admin/novedades');
+var novrouter = require('./routes/nov');
+var histrouter = require('./routes/historia');
+var contactorouter = require('./routes/contacto');
 
 var app = express();
 
@@ -26,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'auswighdiuawgd',
-  resave: false,
+  resave: true,
   saveUninitialized: true
 }));
 
@@ -46,9 +49,17 @@ app.use('/', indexRouter);
 app.use('/admin/novedades', secured, novedadesRouter);
 app.use('/admin/login', loginRouter);
 app.use('/users', usersRouter);
+app.get('/nov', novrouter);
+app.get('/historia', histrouter);
+app.get('/contacto', contactorouter);
 
 
-
+app.get('/saludo', function(req, res) {
+  var user = req.query.user
+  res.render('contacto', {
+    user
+  })
+})
 
 
 // catch 404 and forward to error handler
