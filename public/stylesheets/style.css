@@ -1,11 +1,4 @@
-html,
-body {
-    height: fit-content;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-   
-}
+
 
 #primerback {
     margin: 0;
